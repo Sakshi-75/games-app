@@ -1,0 +1,7 @@
+.Home {
+  display: grid;
+  grid-template-columns: auto auto auto;
+  gap: 2rem 1.5rem;
+  /* border: 1px solid black; */
+  box-shadow: 2px darkslategrey;
+}
