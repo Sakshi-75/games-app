@@ -1,1 +1,11 @@
-.GuessTheNumber {}
+.GuessTheNumber {
+}
+
+.gameHeader {
+  display: flex;
+  justify-content: center;
+}
+
+.backButton {
+  align-content: flex-start;
+}

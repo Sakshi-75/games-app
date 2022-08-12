@@ -1,5 +1,4 @@
-import { Switch } from "react-router-dom";
-import { Route } from "react-router-dom";
+import { Switch, Route } from "react-router-dom";
 import "./App.css";
 import GuessTheNumber from "./GuessTheNumber/GuessTheNumber";
 import Header from "./Header/Header.js";
