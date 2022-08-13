@@ -1,11 +1,97 @@
 .GuessTheNumber {
+  display: grid;
+  padding: 5rem;
+  justify-content: center;
+  justify-items: end;
 }
 
 .gameHeader {
-  display: flex;
+  display: grid;
+  grid-template-columns: auto 3fr;
   justify-content: center;
+  height: 8rem;
+  letter-spacing: 2px;
 }
 
 .backButton {
-  align-content: flex-start;
+  align-items: center;
+  background-color: gold;
+  color: black;
+  padding: 12px 41px;
+  text-decoration: none;
+  margin: 39px 31px;
+  font-family: fantasy;
+}
+
+.rollDice {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  height: 5rem;
+  width: 10rem;
+}
+
+.rollDice img {
+  height: 4rem;
+  width: 4rem;
+}
+
+.rollDice img:hover {
+  height: 4.5rem;
+  width: 4.5rem;
+}
+
+.gameTitle {
+  font-family: fantasy;
+}
+.rollDice input {
+  width: 100%;
+}
+
+@keyframes win {
+  50% {
+    color: gold;
+  }
+  50% {
+    color: white;
+  }
+}
+
+@keyframes lose {
+  50% {
+    color: red;
+  }
+  50% {
+    color: white;
+  }
+}
+.wonGame {
+  color: gold;
+  position: relative;
+  font-weight: bolder;
+  font-style: italic;
+  font-family: cursive;
+  animation-name: win;
+  animation-duration: 2s;
+  animation-iteration-count: infinite;
+}
+
+.loseGame {
+  color: red;
+  position: relative;
+  font-weight: bolder;
+  font-style: italic;
+  font-family: cursive;
+  animation-name: lose;
+  animation-duration: 2s;
+  animation-iteration-count: infinite;
+}
+
+.rolledNumber span {
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+  font-weight: bolder;
+}
+.rolledNumber {
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+  font-weight: 400;
 }
