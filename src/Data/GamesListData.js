@@ -4,4 +4,9 @@ export const gamesListData = [
     name: "Guess the Number",
     route: "/guessthenumber",
   },
+  {
+    id: 2,
+    name: "Three Dice Throw",
+    route: "/threedicethrow",
+  },
 ];

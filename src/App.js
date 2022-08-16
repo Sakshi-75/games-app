@@ -3,6 +3,7 @@ import "./App.css";
 import GuessTheNumber from "./GuessTheNumber/GuessTheNumber";
 import Header from "./Header/Header.js";
 import Home from "./Home/Home";
+import ThreeDiceThrow from "./ThreeDiceThrow/ThreeDiceThrow";
 function App() {
   return (
     <div className="App">
@@ -10,6 +11,9 @@ function App() {
       <Switch>
         <Route path={"/guessthenumber"}>
           <GuessTheNumber />
+        </Route>
+        <Route path={"/threedicethrow"}>
+          <ThreeDiceThrow />
         </Route>
         <Route path={"/"}>
           <Home />
