@@ -4,6 +4,7 @@ import GuessTheNumber from "./GuessTheNumber/GuessTheNumber";
 import Header from "./Header/Header.js";
 import Home from "./Home/Home";
 import ThreeDiceThrow from "./ThreeDiceThrow/ThreeDiceThrow";
+import TicTacToe from "./TicTacToe/TicTacToe";
 function App() {
   return (
     <div className="App">
@@ -14,6 +15,9 @@ function App() {
         </Route>
         <Route path={"/threedicethrow"}>
           <ThreeDiceThrow />
+        </Route>
+        <Route path={"/tictactoe"}>
+          <TicTacToe />
         </Route>
         <Route path={"/"}>
           <Home />

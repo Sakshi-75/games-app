@@ -9,4 +9,9 @@ export const gamesListData = [
     name: "Three Dice Throw",
     route: "/threedicethrow",
   },
+  {
+    id: 3,
+    name: "Tic Tac Toe",
+    route: "/tictactoe",
+  },
 ];

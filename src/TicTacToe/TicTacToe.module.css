@@ -1,0 +1,23 @@
+.TicTacToe {
+  display: grid;
+  grid-template-columns: 30% 30% 30%;
+  grid-template-rows: 30% 30% 30%;
+  padding: 30%;
+  gap: 10px;
+  /* background-color: aqua; */
+}
+
+.Box {
+  border: #665235 solid 2px;
+  height: 110px;
+  width: 180px;
+}
+
+.Box img {
+  height: 3rem;
+  width: 3rem;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 2em;
+  width: 50%;
+}
