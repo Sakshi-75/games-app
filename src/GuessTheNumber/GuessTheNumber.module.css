@@ -34,11 +34,13 @@
 .rollDice img {
   height: 4rem;
   width: 4rem;
+  /* animation: shake 0.5s infinite; */
 }
 
 .rollDice img:hover {
   height: 4.5rem;
   width: 4.5rem;
+  /* animation: shake 0.5s infinite; */
 }
 
 .gameTitle {
@@ -65,6 +67,19 @@
     color: white;
   }
 }
+
+/* @keyframes shake {
+  0% {
+    transform: rotate(8d);
+  }
+  50% {
+    transform: rotate(-8);
+  }
+  100% {
+    transform: rotate(8);
+  }
+} */
+
 .wonGame {
   color: gold;
   position: relative;
