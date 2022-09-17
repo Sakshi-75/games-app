@@ -1,1 +1,3 @@
-.ThreeDiceThrow {}
+.ThreeDiceThrow {
+  background: linear-gradient(to top right, blue, white);
+}
