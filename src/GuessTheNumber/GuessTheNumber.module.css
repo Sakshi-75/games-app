@@ -3,6 +3,7 @@
   padding: 5rem;
   justify-content: center;
   justify-items: end;
+  z-index: 1;
 }
 
 .gameHeader {
@@ -49,7 +50,7 @@
 .rollDice input {
   width: 100%;
 }
-
+/* 
 @keyframes win {
   50% {
     color: gold;
@@ -66,7 +67,7 @@
   50% {
     color: white;
   }
-}
+} */
 
 /* @keyframes shake {
   0% {
@@ -80,7 +81,7 @@
   }
 } */
 
-.wonGame {
+/* .wonGame {
   color: gold;
   position: relative;
   font-weight: bolder;
@@ -100,7 +101,7 @@
   animation-name: lose;
   animation-duration: 2s;
   animation-iteration-count: infinite;
-}
+} */
 
 .rolledNumber span {
   font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;

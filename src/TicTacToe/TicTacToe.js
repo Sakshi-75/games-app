@@ -1,82 +1,77 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
+import Card from "../Card/Card";
 import { TicTacToeData } from "../Data/TicTacToe";
 import styles from "./TicTacToe.module.css";
 
 const TicTacToe = () => {
   const [ticTacToeModel, updateTicTacToeModel] = useState(TicTacToeData);
   const [turn, updateTurn] = useState(0);
-  let currentvalue = 0;
-  // let items = [
-  //   [0, 0, 0],
-  //   [0, 0, 0],
-  //   [0, 0, 0],
-  // ];
+  // const [isGameOver, updateIsGameOver] = useState(false);
+  const [gameResult, updateGameResult] = useState("");
 
-  const checkWin = (id) => {
+  const checkWin = (id, player) => {
+    // if (turn >= 9) {
+    //   console.log("draw the match");
+    // } else
     if (
-      rowCheck(
-        Math.floor(id / 3),
-        //  ticTacToeModel[id].playerName
-        turn % 2 === 0 ? "X" : "O"
-      ) ||
-      columnCheck(
-        id % 3,
-        // ticTacToeModel[id].playerName
-        turn % 2 === 0 ? "X" : "O"
-      )
+      rowCheck(Math.floor(id / 3), id, player) ||
+      columnCheck(id % 3, id, player) ||
+      diagonalCheck(id, player)
     ) {
-      console.log("player win");
-    } else {
-      console.log("player did not win");
+      // updateIsGameOver(true);
+      updateGameResult("PLayer " + player + " WON!!!");
+    } else if (turn >= 8) {
+      updateGameResult("Draw the Match");
     }
   };
 
-  const rowCheck = (row, player) => {
+  const rowCheck = (row, id, player) => {
     let count = 0;
     for (let i = row * 3; i < row * 3 + 3; i++) {
-      console.log("row position is " + i + " player is " + player);
-      console.log(
-        "players are " + ticTacToeModel[i].playerName + " and " + player
-        // +" value is " +
-        // ticTacToeModel[i].playerName ===
-        // player
-      );
-      if (ticTacToeModel[i].playerName === player) {
+      if (id === i || ticTacToeModel[i].playerName === player) {
         count++;
       }
     }
     return count === 3;
   };
 
-  const columnCheck = (column, player) => {
+  const columnCheck = (column, id, player) => {
     let count = 0;
     for (let i = column; i < 9; i += 3) {
       console.log("column position is " + i + " " + player);
-      if (ticTacToeModel[i].playerName === player) {
+      if (id === i || ticTacToeModel[i].playerName === player) {
         count++;
       }
     }
     return count === 3;
   };
 
-  useEffect(() => checkWin(currentvalue));
+  const diagonalCheck = (id, player) => {
+    let count = 0;
+    let startPos = id % 4 === 0 ? 0 : 2;
+    let diff = id % 4 === 0 ? 4 : 2;
+    for (let i = startPos; i <= 9; i += diff) {
+      if (id === i || ticTacToeModel[i].playerName === player) {
+        count++;
+      }
+    }
+    return count === 3;
+  };
   const clickAction = (e) => {
-    const id = e.target.id;
+    const id = Number(e.target.id);
     const jsonData = ticTacToeModel[id];
-    // if (e.target.tagName !== "IMG" && e.target.childElementCount === 0)
-    if (!jsonData.isClicked) {
+    const player = turn % 2 === 0 ? "X" : "O";
+    if (gameResult === "" && !jsonData.isClicked) {
       updateTurn(turn + 1);
       updateTicTacToeModel((data) => {
         data[id].imgName =
           turn % 2 === 0 ? "tictactoe_x.jpg" : "tictactoe_o.jpg";
-        data[id].playerName = turn % 2 === 0 ? "X" : "O";
+        data[id].playerName = player;
         data[id].isClicked = true;
         return data;
       });
-      currentvalue = id;
-      // items[Math.floor(e.target.id / 3)][e.target.id % 3] = 1;
+      checkWin(id, player);
     }
-    // console.log(items);
   };
 
   const boxList = ticTacToeModel.map((model) => (
@@ -86,65 +81,25 @@ const TicTacToe = () => {
       className={styles.Box}
       onClick={(e) => {
         clickAction(e);
-        checkWin(e.target.id);
       }}
     >
       {model.isClicked && <img src={`./assets/${model.imgName}`} alt=""></img>}
     </div>
   ));
 
-  // for (let index = 0; index < 9; index++) {
-  //   boxList[index] = (
-  //     <div id={index} className={styles.Box} onClick={clickAction}>
-  //       {clickedAlreaady[index] !== 0 && (
-  //         <>
-  //           {trun % 2 === 0 && (
-  //             <img src="./assets/tictactoe_x.jpg" alt=""></img>
-  //           )}
-  //           {trun % 2 === 1 && (
-  //             <img src="./assets/tictactoe_o.jpg" alt=""></img>
-  //           )}
-  //         </>
-  //       )}
-  //     </div>
-  //   );
-  // }
-
   return (
-    <div className={styles.TicTacToe}>
-      {boxList}
-      {/* <div id="0" className={styles.Box} onClick={clickAction}>
-        {clickedAlreaady[0] !== 0 && (
-          <>
-            {trun % 2 === 0 && (
-              <img src="./assets/tictactoe_x.jpg" alt=""></img>
-            )}
-            {trun % 2 === 1 && (
-              <img src="./assets/tictactoe_o.jpg" alt=""></img>
-            )}
-          </>
+    <>
+      {/* <div className={`${styles.point}`}></div> */}
+      <div>
+        {gameResult !== "" && (
+          <Card>
+            <h1 className={styles.wonGame}>{gameResult}</h1>
+          </Card>
         )}
       </div>
-      <div id="1" className={styles.Box} onClick={clickAction}>
-        {clickedAlreaady[1] !== 0 && (
-          <>
-            {trun % 2 === 0 && (
-              <img src="./assets/tictactoe_x.jpg" alt=""></img>
-            )}
-            {trun % 2 === 1 && (
-              <img src="./assets/tictactoe_o.jpg" alt=""></img>
-            )}
-          </>
-        )}
-      </div>
-      array.forEach(element => {});
-      <div className={styles.Box}></div> */}
-    </div>
+      <div className={`${styles.TicTacToe} `}>{boxList}</div>
+    </>
   );
 };
-
-TicTacToe.propTypes = {};
-
-TicTacToe.defaultProps = {};
 
 export default TicTacToe;

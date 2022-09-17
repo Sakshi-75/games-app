@@ -4,6 +4,8 @@
   grid-template-rows: 30% 30% 30%;
   padding: 30%;
   gap: 10px;
+  padding-top: 8%;
+  z-index: 1;
   /* background-color: aqua; */
 }
 
@@ -20,4 +22,20 @@
   margin-right: auto;
   margin-top: 2em;
   width: 50%;
+}
+
+.point {
+  width: 5px;
+  height: 6px;
+  background: tomato;
+  border-radius: 3px;
+  transition: width 1s ease;
+  z-index: 5;
+  left: 3px;
+  top: 3px;
+  /* visibility: hidden; */
+}
+
+.point:hover {
+  width: 2px;
 }
